@@ -1,0 +1,3 @@
+https://github.com/hassanyf/Simple-Server-and-Chat-Program/blob/master/client.cpp
+https://beej.us/guide/bgnet/html/#getaddrinfoprepare-to-launch
+https://www.geeksforgeeks.org/multithreading-in-cpp/
