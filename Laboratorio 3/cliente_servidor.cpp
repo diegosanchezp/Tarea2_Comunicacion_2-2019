@@ -114,6 +114,10 @@ void servidor()
       return;
     }
   }
+  
+  char hname[500];
+  gethostname(hname, 500);
+  std::cout << "Host name: " << hname << std::endl;
   // A partir de aqui ya esta listo para comunicar con el cliente
 
   // Recibir mensaje
