@@ -54,13 +54,16 @@ void cliente(char *ip)
   std::cout<<"Cliente ejecutandose"<<std::endl;
   int len = strlen(msg);
   
-  // Enviar data al servidor
-  send(sockfd, msg, len, 0);
+  for(int i=1; i<10; i++){
+    // Enviar data al servidor
+    send(sockfd, msg, len, 0);
   
-  // Recibir data del servidor
-  recv(sockfd, respuesta, BUFFER_SIZE -1, 0);
+    // Recibir data del servidor
+    recv(sockfd, respuesta, BUFFER_SIZE -1, 0);
 
   std::cout << "Respuesta del servidor: " << respuesta <<std::endl;
+  }
+  
   // Cerrar conexion una vez enviado el mensaje
   //mtx.unlock();
   //close(sockfd);
@@ -121,16 +124,17 @@ void servidor()
   // A partir de aqui ya esta listo para comunicar con el cliente
 
   // Recibir mensaje
-  recv(client_fd, buffer, BUFFER_SIZE -1, 0);
-  
-  std::cout << "servidor recibio respuesta del cliente: " << buffer<< std::endl;
-  
-  char *msg = "Hola desde el servidor";
+  for(int i=1; i<10; i++){
+    recv(client_fd, buffer, BUFFER_SIZE -1, 0);
+    
+    std::cout << "servidor recibio respuesta del cliente: " << buffer<< std::endl;
+    
+    char *msg = "Hola desde el servidor";
 
-  len = strlen(msg);
-  bytes_enviados = send(client_fd, msg, len, 0);
-  std::cout << "Servidor: Bytes enviados" << bytes_enviados<< std::endl;
-  
+    len = strlen(msg);
+    bytes_enviados = send(client_fd, msg, len, 0);
+    std::cout << "Servidor: Bytes enviados" << bytes_enviados<< std::endl;
+  }
 
   // Desocupar socket
   int yes=1;
